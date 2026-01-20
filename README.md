@@ -1,5 +1,9 @@
 # Prompt Injection Taxonomy  
 
+** NEW 1.5 version built into interactive Githug Pages **
+
+[For the new live site click here](https://arcanum-sec.github.io/arc_pi_taxonomy)
+
 🚧 **This repository is in active development. Contributions and feedback are welcome!** 🚧  
 
 This repository provides a structured taxonomy of **prompt injection attacks**, categorizing different types of attack intents, techniques, and evasions. It serves as a **resource for security researchers, AI developers, and red teamers** working to understand and mitigate the risks associated with prompt injection in AI-driven applications.  
