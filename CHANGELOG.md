@@ -4,6 +4,10 @@ All notable changes to the Arcanum Prompt Injection Taxonomy are documented here
 
 ## [1.6.1] - 2026-06-29
 
+### Changed
+
+- **Cards now display alphabetically by title** within each pillar. Reference codes remain stable identifiers tied to each node, so they no longer run sequentially down the page (a node keeps its code when renamed, and new nodes are appended, so a code lands where it was assigned, not where the title sorts). The data order and codes are unchanged; only the render order is alphabetized.
+
 ### Added
 
 - **Technique `PIT-T-70` Function-Call Parameter Smuggling** — abusing the structured arguments the model fills in a tool or function call: hiding instructions in JSON fields, injecting executable payloads into parameter values (`url`, `query`, `content`) that a downstream tool auto-runs, or exploiting parser-versus-model divergence. Distinct from Tool-Definition Injection (the tool description) and Tool-Call Spoofing (forged results); this weaponizes the call's arguments. Totals: 171 to 172 nodes; Techniques 69 to 70.

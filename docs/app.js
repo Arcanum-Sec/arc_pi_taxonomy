@@ -37,7 +37,15 @@ function renderCategoryCards(category, items, gridId) {
         inputs: 'Input'
     };
 
-    grid.innerHTML = items.map((item, index) => `
+    // Display cards alphabetically by title, but keep each card's ORIGINAL array
+    // index in data-index so the modal lookup (taxonomyData[category][index]) and
+    // the reference codes stay correct. Codes are stable identifiers, not the
+    // display order, so they will not run 01, 02, 03 sequentially down the page.
+    const ordered = items
+        .map((item, idx) => ({ item, idx }))
+        .sort((a, b) => a.item.title.localeCompare(b.item.title, 'en', { sensitivity: 'base' }));
+
+    grid.innerHTML = ordered.map(({ item, idx: index }) => `
         <div class="card ${category}" data-category="${category}" data-index="${index}" data-title="${item.title.toLowerCase()}" data-description="${item.description.toLowerCase()}" data-aliases="${item.aliases ? escapeHtml(item.aliases.join(' | ').toLowerCase()) : ''}" data-code="${(item.code || '').toLowerCase()}" data-delivery="${item.delivery || ''}" data-local="${item.local ? 'local' : ''}">
             <div class="card-header">
                 <div class="card-title-wrap">
