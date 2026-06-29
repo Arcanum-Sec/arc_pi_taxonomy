@@ -157,6 +157,20 @@ body {
     background-clip: text;
 }
 
+.version-tag {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--amethyst);
+    -webkit-text-fill-color: var(--amethyst);
+    vertical-align: super;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    padding: 0.05rem 0.35rem;
+    margin-left: 0.3rem;
+}
+
 .tagline {
     font-size: 0.875rem;
     color: var(--text-muted);
