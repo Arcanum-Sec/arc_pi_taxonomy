@@ -5,7 +5,7 @@
 [![Live site](https://img.shields.io/badge/Live-arcanum--sec.com%2Fpitax-BA258A.svg)](https://www.arcanum-sec.com/pitax)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-interactive-9966CC.svg)](https://arcanum-sec.github.io/arc_pi_taxonomy/)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-562997.svg)](https://creativecommons.org/licenses/by/4.0/)
-![Nodes](https://img.shields.io/badge/nodes-171-3fb950.svg)
+![Nodes](https://img.shields.io/badge/nodes-172-3fb950.svg)
 
 **An open, interactive classification of prompt injection and LLM attacks, built for cybersecurity auditors and penetration testers moving into AI red teaming.**
 
@@ -22,12 +22,12 @@ Every entry has a citable reference code (for example `PIT-I-01`), the alternate
 
 ## Structure
 
-The taxonomy is organized into four pillars (171 nodes total):
+The taxonomy is organized into four pillars (172 nodes total):
 
 | Pillar | Code | What it answers | Count |
 |---|---|---|---|
 | Intents | `PIT-I-NN` | What is the attacker trying to achieve? | 27 |
-| Techniques | `PIT-T-NN` | What method manipulates the model? | 69 |
+| Techniques | `PIT-T-NN` | What method manipulates the model? | 70 |
 | Evasions | `PIT-E-NN` | How is it obfuscated past filters? | 63 |
 | Inputs | `PIT-N-NN` | Where does the payload enter? | 12 |
 
@@ -47,7 +47,7 @@ This GitHub repository is the canonical source. Community input is welcome: open
 
 ## Changelog
 
-See [CHANGELOG.md](CHANGELOG.md). The current release is **v1.6**, a large expansion and rebuild.
+See [CHANGELOG.md](CHANGELOG.md). The current release is **v1.6.1**; **v1.6** was a large expansion and rebuild.
 
 ## License and attribution
 
@@ -55,7 +55,7 @@ Licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](http
 
 **Required attribution:** Based on the Arcanum Prompt Injection Taxonomy by Jason Haddix, Arcanum Information Security (arcanum-sec.com).
 
-**How to cite:** Haddix, J. (2026). *Arcanum Prompt Injection Taxonomy* (v1.6). Arcanum Information Security. https://www.arcanum-sec.com/pitax
+**How to cite:** Haddix, J. (2026). *Arcanum Prompt Injection Taxonomy* (v1.6.1). Arcanum Information Security. https://www.arcanum-sec.com/pitax
 
 ---
 

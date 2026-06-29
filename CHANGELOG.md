@@ -2,6 +2,16 @@
 
 All notable changes to the Arcanum Prompt Injection Taxonomy are documented here.
 
+## [1.6.1] - 2026-06-29
+
+### Added
+
+- **Technique `PIT-T-70` Function-Call Parameter Smuggling** — abusing the structured arguments the model fills in a tool or function call: hiding instructions in JSON fields, injecting executable payloads into parameter values (`url`, `query`, `content`) that a downstream tool auto-runs, or exploiting parser-versus-model divergence. Distinct from Tool-Definition Injection (the tool description) and Tool-Call Spoofing (forged results); this weaponizes the call's arguments. Totals: 171 to 172 nodes; Techniques 69 to 70.
+
+### Acknowledgments
+
+- The Function-Call Parameter Smuggling concept was contributed by **redbankdev** (https://github.com/redbankdev) via their fork. The idea was adopted and re-authored into the taxonomy schema; no code was merged. Thanks for the contribution.
+
 ## [1.6] - 2026-06-29
 
 A large expansion and rebuild. The taxonomy grows from 107 to 171 nodes, the per-node Markdown is retired in favor of the interactive site plus a single JSON data file, the project is rebranded, and the repository is narrowed to the taxonomy alone. Audience framing is now explicit: this resource is for cybersecurity auditors and penetration testers moving into AI red teaming.
