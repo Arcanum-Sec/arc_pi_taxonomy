@@ -1,8 +1,8 @@
 # License
 
-Copyright © 2024 Jason Haddix, Arcanum Information Security
+Copyright © 2024-2026 Jason Haddix, Arcanum Information Security
 
-This work ("Arc PI Taxonomy") is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
+This work ("Arcanum Prompt Injection Taxonomy") is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
 
 You are free to:
 
@@ -15,7 +15,7 @@ Under the following terms:
 
 **Attribution Example:**
 
-> This content/methodology is based on the [Arc PI Taxonomy](https://github.com/Arcanum-Sec/arc_pi_taxonomy/) created by Jason Haddix of [Arcanum Information Security](https://arcanum-sec.com/).
+> This content/methodology is based on the [Arcanum Prompt Injection Taxonomy](https://github.com/Arcanum-Sec/arc_pi_taxonomy/) created by Jason Haddix of [Arcanum Information Security](https://arcanum-sec.com/).
 
 For details and the full legal code, please visit the official license page:
 

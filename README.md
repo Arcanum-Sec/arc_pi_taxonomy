@@ -1,55 +1,62 @@
-# Prompt Injection Taxonomy  
+<div align="center">
 
-** NEW 1.5 version built into interactive Githug Pages **
+![Arcanum Prompt Injection Taxonomy](docs/pitax-banner.png)
 
-[For the new live site click here](https://arcanum-sec.github.io/arc_pi_taxonomy)
+[![Live site](https://img.shields.io/badge/Live-arcanum--sec.com%2Fpitax-BA258A.svg)](https://www.arcanum-sec.com/pitax)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-interactive-9966CC.svg)](https://arcanum-sec.github.io/arc_pi_taxonomy/)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-562997.svg)](https://creativecommons.org/licenses/by/4.0/)
+![Nodes](https://img.shields.io/badge/nodes-171-3fb950.svg)
 
-🚧 **This repository is in active development. Contributions and feedback are welcome!** 🚧  
+**An open, interactive classification of prompt injection and LLM attacks, built for cybersecurity auditors and penetration testers moving into AI red teaming.**
 
-This repository provides a structured taxonomy of **prompt injection attacks**, categorizing different types of attack intents, techniques, and evasions. It serves as a **resource for security researchers, AI developers, and red teamers** working to understand and mitigate the risks associated with prompt injection in AI-driven applications.  
+</div>
 
-## Structure  
+## The taxonomy is interactive
 
-The taxonomy is organized into the following key areas:  
+The Arcanum Prompt Injection Taxonomy lives as an interactive, searchable web app. The two deployed versions below are the main, always-current copies. They are kept in parity and are the canonical reference:
 
-### **Attack Intents** [`/attack_intents/`]  
-   - Describes the **goals and objectives** that attackers aim to achieve through prompt injection.  
+- **Website:** https://www.arcanum-sec.com/pitax
+- **GitHub Pages:** https://arcanum-sec.github.io/arc_pi_taxonomy/
 
-### **Attack Techniques** [`/attack_techniques/`]  
-   - Details various **methods and approaches** used to execute prompt injection attacks.  
+Every entry has a citable reference code (for example `PIT-I-01`), the alternate names other frameworks use for the same attack (OWASP, MITRE ATLAS, NIST, MLCommons, garak, and others), a delivery tag (direct, indirect, or either), and example prompts. White-box attacks that need the model weights are flagged `LOCAL` so testers know they do not apply to a black-box API or chatbot.
 
-### **Attack Evasions** [`/attack_evasions/`]  
-   - Covers **methods used to hide, obfuscate, or avoid detection** of prompt injection attacks.  
+## Structure
 
-### **Additional Resources**  
+The taxonomy is organized into four pillars (171 nodes total):
 
-- **LLM DevOps Infrastructure Security Assessment Table** [`/ecosystem/README.md`]  
-   - A structured assessment framework for evaluating the **security of AI-enabled infrastructures**.  
+| Pillar | Code | What it answers | Count |
+|---|---|---|---|
+| Intents | `PIT-I-NN` | What is the attacker trying to achieve? | 27 |
+| Techniques | `PIT-T-NN` | What method manipulates the model? | 69 |
+| Evasions | `PIT-E-NN` | How is it obfuscated past filters? | 63 |
+| Inputs | `PIT-N-NN` | Where does the payload enter? | 12 |
 
-- **Example Probes for AI-Enabled Forms & Endpoints** [`/probes.md`]  
-   - A **curated list of example probes** to help identify AI-enabled web forms and endpoints in applications.  
+## Building on the data
 
-## Usage  
+If you want to analyze, extend, or build tools on top of the taxonomy, use the data file:
 
-Each folder contains individual Markdown files with **detailed descriptions of specific components** within each category. The taxonomy is designed to be clear, structured, and easy to navigate.  
+- **`docs/data/taxonomy.json`** is plain JSON: one object with `intents`, `techniques`, `evasions`, and `inputs` arrays. Each node carries `code`, `title`, `description`, `aliases`, `ideas`, and `examples`. It parses cleanly in any language and is easy for LLMs to consume directly.
 
-## Who Is This For?  
+`docs/data/taxonomy.js` is the same data wrapped for the web app to load; treat `taxonomy.json` as the source for programmatic use.
 
-**Security researchers** analyzing LLM vulnerabilities  
-**Red teams** assessing AI-driven applications  
-**Developers** securing AI-powered systems  
-**Academics & enthusiasts** studying adversarial AI  
+> **Note on format.** Versions through 1.0 shipped the taxonomy as one Markdown file per node. From 1.6 onward the taxonomy is maintained as the interactive site plus the single JSON data file, and the old per-node Markdown folders have been retired. To build on the data, use `taxonomy.json`.
 
-## Contributing  
+## Contributing
 
-This project is actively evolving! Contributions, corrections, and additions are encouraged. Please follow the repository’s contribution guidelines to submit new findings or improvements.  
+This GitHub repository is the canonical source. Community input is welcome: open an issue, or submit a pull request editing `docs/data/taxonomy.js` (and `taxonomy.json`). Reviewed changes are merged here and then deployed to the GitHub Pages site and the website.
 
-## License & Attribution
+## Changelog
 
-This methodology and repository content are licensed under a [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+See [CHANGELOG.md](CHANGELOG.md). The current release is **v1.6**, a large expansion and rebuild.
 
-If you use, reference, or build upon this methodology, you **must** explicitly attribute the original work as follows:
+## License and attribution
 
-> *"This methodology/content is based on the [Arcanum Prompt Injection Taxonomy](https://github.com/Arcanum-Sec/arc_pi_taxonomy/) by Jason Haddix ([Arcanum Information Security](https://arcanum-sec.com/))."*
+Licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). You may use, share, and build upon this taxonomy, including commercially, provided you give attribution.
 
-Full license details are available in the [LICENSE.md](LICENSE.md) file.
+**Required attribution:** Based on the Arcanum Prompt Injection Taxonomy by Jason Haddix, Arcanum Information Security (arcanum-sec.com).
+
+**How to cite:** Haddix, J. (2026). *Arcanum Prompt Injection Taxonomy* (v1.6). Arcanum Information Security. https://www.arcanum-sec.com/pitax
+
+---
+
+Created by Jason Haddix and Arcanum Information Security.

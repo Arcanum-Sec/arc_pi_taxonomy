@@ -20,6 +20,12 @@ function renderCards() {
     renderCategoryCards('inputs', taxonomyData.inputs, 'inputs-grid');
 }
 
+function deliveryTitle(d) {
+    return d === 'direct' ? 'Direct delivery (attacker interacts with the model)'
+        : d === 'indirect' ? 'Indirect delivery (payload rides in ingested data)'
+        : 'Either direct or indirect delivery';
+}
+
 function renderCategoryCards(category, items, gridId) {
     const grid = document.getElementById(gridId);
     if (!grid) return;
@@ -32,12 +38,20 @@ function renderCategoryCards(category, items, gridId) {
     };
 
     grid.innerHTML = items.map((item, index) => `
-        <div class="card ${category}" data-category="${category}" data-index="${index}" data-title="${item.title.toLowerCase()}" data-description="${item.description.toLowerCase()}">
+        <div class="card ${category}" data-category="${category}" data-index="${index}" data-title="${item.title.toLowerCase()}" data-description="${item.description.toLowerCase()}" data-aliases="${item.aliases ? escapeHtml(item.aliases.join(' | ').toLowerCase()) : ''}" data-code="${(item.code || '').toLowerCase()}" data-delivery="${item.delivery || ''}" data-local="${item.local ? 'local' : ''}">
             <div class="card-header">
-                <h3 class="card-title">${item.title}</h3>
-                <span class="card-badge">${categoryLabels[category]}</span>
+                <div class="card-title-wrap">
+                    ${item.code ? `<span class="card-code">${item.code}</span>` : ''}
+                    <h3 class="card-title">${item.title}</h3>
+                </div>
+                <div class="card-tags">
+                    ${item.local ? `<span class="local-tag" title="Requires local model-weight access">LOCAL</span>` : ''}
+                    ${item.delivery ? `<span class="delivery-dot delivery-${item.delivery}" title="${deliveryTitle(item.delivery)}"></span>` : ''}
+                    <span class="card-badge">${categoryLabels[category]}</span>
+                </div>
             </div>
             <p class="card-description">${item.description}</p>
+            ${item.aliases && item.aliases.length ? `<p class="card-aka"><span class="card-aka-label">aka</span> ${escapeHtml(item.aliases.join(' · '))}</p>` : ''}
             <div class="card-footer">
                 <span class="card-examples-count">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -182,8 +196,11 @@ function performSearch(query) {
     allCards.forEach(card => {
         const title = card.dataset.title || '';
         const description = card.dataset.description || '';
+        const aliases = card.dataset.aliases || '';
+        const code = card.dataset.code || '';
+        const meta = `${card.dataset.local || ''} ${card.dataset.delivery || ''}`;
 
-        if (title.includes(query) || description.includes(query)) {
+        if (title.includes(query) || description.includes(query) || aliases.includes(query) || code.includes(query) || meta.includes(query)) {
             card.classList.remove('hidden');
         } else {
             card.classList.add('hidden');
@@ -240,8 +257,34 @@ function openModal(category, index) {
     // Update modal content
     categoryEl.textContent = categoryLabels[category];
     categoryEl.className = `modal-category ${category}`;
+    const codeEl = document.getElementById('modal-code');
+    if (codeEl) codeEl.textContent = data.code || '';
+    const deliveryEl = document.getElementById('modal-delivery');
+    if (deliveryEl) {
+        if (data.delivery) {
+            deliveryEl.style.display = '';
+            const label = data.delivery === 'direct' ? 'Direct' : (data.delivery === 'indirect' ? 'Indirect' : 'Either');
+            deliveryEl.innerHTML = `<span class="delivery-dot delivery-${data.delivery}"></span> ${label}`;
+        } else {
+            deliveryEl.style.display = 'none';
+        }
+    }
+    const localCallout = document.getElementById('modal-local-callout');
+    if (localCallout) localCallout.style.display = data.local ? 'flex' : 'none';
     titleEl.textContent = data.title;
     descriptionEl.textContent = data.description;
+
+    // Update aliases ("Also Known As")
+    const aliasesSection = document.getElementById('modal-aliases-section');
+    const aliasesEl = document.getElementById('modal-aliases');
+    if (data.aliases && data.aliases.length > 0 && aliasesSection && aliasesEl) {
+        aliasesSection.style.display = 'block';
+        aliasesEl.innerHTML = data.aliases.map(alias =>
+            `<li class="alias-chip">${escapeHtml(alias)}</li>`
+        ).join('');
+    } else if (aliasesSection) {
+        aliasesSection.style.display = 'none';
+    }
 
     // Update ideas
     if (data.ideas && data.ideas.length > 0 && ideasSection && ideasEl) {
